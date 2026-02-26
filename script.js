@@ -9,7 +9,9 @@ const winningCombinations = [
     [0,4,8],[2,4,6]
 ];
 let human = true;
+let count = 0;
 cells.forEach((cell) => {
+
     cell.addEventListener('click',function input(){
         // alert("Box was clicked");
         if(human && cell.innerText===''){
@@ -26,12 +28,15 @@ cells.forEach((cell) => {
         game.style.transition = "filter 0.5s ease";
             // cell.innerText = "O";
         setTimeout(computer,1000);
-
+         if(count===9 && !(checkWinner()))
+            winnerPerson.innerText = "TIE !";
         
         // cell.removeEventListener('click',input);
 
         ;
     });
+
+        // winnerPerson.innerText = "TIE!";
 });
 
 const computer = ()=>{
@@ -57,6 +62,7 @@ const computer = ()=>{
     game.style.transition = "filter 0.5s ease";
 }
   const checkWinner = ()=>{{
+            count = count + 1;
             for(let pattern of winningCombinations){
                     let cell1 = cells[pattern[0]].innerText;
                     let cell2 = cells[pattern[1]].innerText;
@@ -65,7 +71,7 @@ const computer = ()=>{
                     if(cell1 != "" && cell2 != "" && cell3 != ""){
                     if(cell1 === cell2 && cell2===cell3){
                         // alert("Winner !");
-                        
+                        loader.style.display = "none";
                         return true;
                     }
                     }
@@ -95,7 +101,7 @@ reset[0].addEventListener('click', () => {
         cell.style.pointerEvents = "auto"; 
         cell.style.opacity = "1";          
     });
-
+    count = 0;
     human = true; 
     winnerPerson.innerText = "Have the courage to win ?";
     loader.style.display = "none";
