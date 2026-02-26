@@ -13,8 +13,8 @@ let count = 0;
 cells.forEach((cell) => {
 
     cell.addEventListener('click',function input(){
-        // alert("Box was clicked");
-        if(human && cell.innerText===''){
+        if(cell.innerText===''){
+        if(human){
         cell.innerText = "X";
             if(checkWinner()){
                 let USER = "You are";
@@ -30,13 +30,11 @@ cells.forEach((cell) => {
         setTimeout(computer,1000);
          if(count===9 && !(checkWinner()))
             winnerPerson.innerText = "TIE !";
-        
-        // cell.removeEventListener('click',input);
 
         ;
+        }
     });
 
-        // winnerPerson.innerText = "TIE!";
 });
 
 const computer = ()=>{
