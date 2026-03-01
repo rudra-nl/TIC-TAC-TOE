@@ -28,10 +28,12 @@ cells.forEach((cell) => {
         game.style.transition = "filter 0.5s ease";
             // cell.innerText = "O";
         setTimeout(computer,1000);
-         if(count===9 && !(checkWinner()))
+         if(count===9 && !(checkWinner())){
             winnerPerson.innerText = "TIE !";
-
-        ;
+            loader.style.display = "none";
+            game.style.filter = "blur(8px)";
+            return;
+        }
         }
     });
 
